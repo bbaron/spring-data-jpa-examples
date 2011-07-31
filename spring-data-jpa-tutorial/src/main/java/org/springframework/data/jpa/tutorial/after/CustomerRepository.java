@@ -3,9 +3,9 @@ package org.springframework.data.jpa.tutorial.after;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.tutorial.core.Customer;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
 
-public interface CustomerRepository extends CrudRepository<Customer, Long> {
+public interface CustomerRepository extends PagingAndSortingRepository<Customer, Long> {
     /**
      * Returns a page of {@link Customer}s with the given lastname.
      * 

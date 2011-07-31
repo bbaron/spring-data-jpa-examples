@@ -25,10 +25,10 @@ public class CustomerServiceIntegrationTest extends AbstractTutorialTest {
     @Test
     public void findsAllCustomers() throws Exception {
 
-        Iterable<Customer> result = repository.findAll();
+        Page<Customer> result = repository.findAll(new PageRequest(0, 1));
 
-        assertThat(result, is(notNullValue()));
-        assertTrue(result.iterator().hasNext());
+        assertNotNull(result);
+        assertEquals(1, result.getContent().size());
     }
 
 
