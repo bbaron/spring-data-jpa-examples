@@ -7,7 +7,6 @@ import java.util.List;
 
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.tutorial.before.CustomerService;
 import org.springframework.data.jpa.tutorial.core.AbstractTutorialTest;
 import org.springframework.data.jpa.tutorial.core.Account;
 import org.springframework.data.jpa.tutorial.core.Customer;
@@ -21,7 +20,7 @@ public class AccountServiceIntegrationAfterTest extends AbstractTutorialTest {
     AccountRepository accountRepository;
 
     @Autowired
-    CustomerService customerService;
+    CustomerRepository customerService;
 
 
     @Test
@@ -29,7 +28,7 @@ public class AccountServiceIntegrationAfterTest extends AbstractTutorialTest {
 
         assertNotNull("accountService should be wired", accountRepository);
         assertNotNull("customerService should be wired", customerService);
-        Customer customer = customerService.findById(1L);
+        Customer customer = customerService.findOne(1L);
 
         List<Account> accounts = accountRepository.findByCustomer(customer);
 
