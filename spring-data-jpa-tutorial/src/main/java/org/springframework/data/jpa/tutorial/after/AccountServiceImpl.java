@@ -2,10 +2,7 @@ package org.springframework.data.jpa.tutorial.after;
 
 import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.TypedQuery;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.tutorial.before.AccountService;
 import org.springframework.data.jpa.tutorial.core.Account;
 import org.springframework.data.jpa.tutorial.core.Customer;
@@ -21,45 +18,18 @@ import org.springframework.transaction.annotation.Transactional;
 @Repository
 class AccountServiceImpl implements AccountService {
 
-    @PersistenceContext
-    private EntityManager em;
+    @Autowired
+    private AccountRepository accountRepository;
 
-
-    /*
-     * (non-Javadoc)
-     * 
-     * @see
-     * org.springframework.data.jpa.showcase.before.AccountService#save(org.
-     * springframework.data.jpa.showcase.core.Account)
-     */
     @Override
     public Account save(Account account) {
-
-        if (account.getId() == null) {
-            em.persist(account);
-            return account;
-        } else {
-            return em.merge(account);
-        }
+        return accountRepository.save(account);
     }
 
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see
-     * org.springframework.data.jpa.showcase.before.AccountService#findByCustomer
-     * (org.springframework.data.jpa.showcase.core.Customer)
-     */
     @Override
     @Transactional(readOnly = true)
     public List<Account> findByCustomer(Customer customer) {
-
-        TypedQuery<Account> query =
-                em.createQuery("select a from Account a where a.customer = ?1",
-                        Account.class);
-        query.setParameter(1, customer);
-
-        return query.getResultList();
+        return accountRepository.findByCustomer(customer);
     }
 }
