@@ -15,7 +15,7 @@ import org.springframework.data.jpa.tutorial.core.Customer;
 import org.springframework.test.context.ContextConfiguration;
 
 
-@ContextConfiguration({"classpath:application-context-before.xml", "classpath:application-context-after.xml"})
+@ContextConfiguration({"classpath:application-context-after.xml"})
 public class AccountServiceIntegrationAfterTest extends AbstractTutorialTest {
 
     @Autowired

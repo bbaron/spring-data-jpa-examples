@@ -8,5 +8,6 @@
         http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
 
     <import resource="infrastructure.xml" />
+    <context:component-scan base-package="org.springframework.data.jpa.tutorial.after" />
     <jpa:repositories base-package="org.springframework.data.jpa.tutorial.after" />
 </beans>
