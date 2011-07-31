@@ -27,7 +27,7 @@ public interface CustomerService {
      * 
      * @return
      */
-    List<Customer> findAll();
+    Iterable<Customer> findAll();
 
     /**
      * Returns the page of {@link Customer}s with the given index of the given

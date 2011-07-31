@@ -1,6 +1,6 @@
 package org.springframework.data.jpa.tutorial.before;
 
-import static org.hamcrest.CoreMatchers.*;
+import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;
 
 import java.util.List;
@@ -25,10 +25,10 @@ public class CustomerServiceIntegrationTest extends AbstractTutorialTest {
     @Test
     public void findsAllCustomers() throws Exception {
 
-        List<Customer> result = repository.findAll();
+        Iterable<Customer> result = repository.findAll();
 
         assertThat(result, is(notNullValue()));
-        assertFalse(result.isEmpty());
+        assertTrue(result.iterator().hasNext());
     }
 
 
