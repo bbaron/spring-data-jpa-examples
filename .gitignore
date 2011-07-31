@@ -3,3 +3,8 @@
 .springBeans
 .settings/
 target/
+*/.project
+*/.classpath
+*/.springBeans
+*/.settings/
+*/target/
